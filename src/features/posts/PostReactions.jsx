@@ -1,9 +1,9 @@
 const icons = {
-  like: '👍',
+  thumbsUp: '👍',
   hooray: '🎉',
   heart: '❤️',
   rocket: '🚀',
-  ryr: '👀',
+  eye: '👀',
 };
 export default function PostReactions({ reactions }) {
   const content = Object.keys(reactions).map((item) => (
