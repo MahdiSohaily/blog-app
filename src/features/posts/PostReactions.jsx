@@ -1,29 +1,15 @@
-import React from 'react';
-
-export default function PostReactions({
-  like,
-  celebrate,
-  hearth,
-  rocket,
-  eye,
-}) {
-  return (
-    <div>
-      <button type="button" className="muted-button reaction-button">
-        👍 0
-      </button>
-      <button type="button" className="muted-button reaction-button">
-        🎉 0
-      </button>
-      <button type="button" className="muted-button reaction-button">
-        ❤️ 0
-      </button>
-      <button type="button" className="muted-button reaction-button">
-        🚀 0
-      </button>
-      <button type="button" className="muted-button reaction-button">
-        👀 0
-      </button>
-    </div>
-  );
+const icons = {
+  like: '👍',
+  hooray: '🎉',
+  heart: '❤️',
+  rocket: '🚀',
+  ryr: '👀',
+};
+export default function PostReactions({ reactions }) {
+  const content = Object.keys(reactions).map((item) => (
+    <button type="button" className="muted-button reaction-button">
+      {icons[item]} {reactions[item]}.
+    </button>
+  ));
+  return <div>{content}</div>;
 }
