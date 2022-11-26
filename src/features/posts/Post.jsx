@@ -1,5 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PostAuthor from './PostAuthor';
+import PostDate from './PostDate';
 import PostReactions from './PostReactions';
 import { selectPostById } from './postsSlice';
 
@@ -7,25 +10,20 @@ export default function Post({ id }) {
   const post = useSelector((state) => selectPostById(state, id));
   return (
     <article className="post-excerpt">
-      <h3>title</h3>
+      <h3>{post.title}</h3>
       <div>
-        <span>by name</span>
-        <span title="2021-02-06T21:36:04.822Z">
-          &nbsp; <i>28 minutes ago</i>
-        </span>
+        <PostAuthor userId={post.user} />
+        <PostDate date={post.date} />
       </div>
-      <p className="post-content">
-        The zeitgeist contends that one cannot separate cranberries from gentle
-        deers! The literature would{' '}
-      </p>
-      <PostReactions />
-      <a
+      <p className="post-content">{post.content.substring(0, 70)}</p>
+      <PostReactions reactions={post.reactions} />
+      <Link
         className="button muted-button"
-        href="/posts/oE1ZviL86I8TznPnEPAy0"
+        to={`/posts/${id}`}
         dideo-checked="true"
       >
         View Post
-      </a>
+      </Link>
     </article>
   );
 }
