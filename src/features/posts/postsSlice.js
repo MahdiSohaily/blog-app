@@ -16,6 +16,14 @@ export const addNewPost = createAsyncThunk(
   }
 );
 
+export const saveReaction = createAsyncThunk(
+  'posts/saveReaction',
+  async ({ postId, type }) => {
+    client.post(`posts/${postId}/reaction/${type}`);
+    return { postId, type };
+  }
+);
+
 const postsAdapter = createEntityAdapter({
   sortComparer: (a, b) => b.date - a.date,
 });
@@ -44,6 +52,10 @@ const postsSlice = createSlice({
       console.log(action.payload);
     },
     [addNewPost.fulfilled]: postsAdapter.addOne,
+    [saveReaction.fulfilled]: (state, action) => {
+      const { id, type } = action.payload;
+      state.entities[id].reactions[type] += 1;
+    },
   },
 });
 
