@@ -53,8 +53,8 @@ const postsSlice = createSlice({
     },
     [addNewPost.fulfilled]: postsAdapter.addOne,
     [saveReaction.fulfilled]: (state, action) => {
-      const { id, type } = action.payload;
-      state.entities[id].reactions[type] += 1;
+      const { postId, type } = action.payload;
+      state.entities[postId].reactions[type] += 1;
     },
   },
 });

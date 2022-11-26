@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { saveReaction } from './postsSlice';
 
 const icons = {
   thumbsUp: '👍',
@@ -7,16 +8,24 @@ const icons = {
   rocket: '🚀',
   eyes: '👀',
 };
-export default function PostReactions({ reactions }) {
+export default function PostReactions({ reactions, postId }) {
   const dispatch = useDispatch();
-  const handleReaction = () => {};
+  const handleReaction = (postId, type) => {
+    console.log(postId);
+    dispatch(
+      saveReaction({
+        postId,
+        type,
+      })
+    );
+  };
 
   const content = Object.keys(reactions).map((item) => (
     <button
       key={item}
       type="button"
       className="muted-button reaction-button"
-      onClick={handleReaction}
+      onClick={() => handleReaction(postId, item)}
     >
       {icons[item]} {reactions[item]}.
     </button>

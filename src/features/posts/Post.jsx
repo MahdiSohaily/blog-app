@@ -16,7 +16,7 @@ export default function Post({ id }) {
         <PostDate date={post.date} />
       </div>
       <p className="post-content">{post.content.substring(0, 200)}</p>
-      <PostReactions reactions={post.reactions} />
+      <PostReactions reactions={post.reactions} postId={id} />
       <Link
         className="button muted-button"
         to={`/posts/${id}`}
