@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Post() {
+export default function Post({ id }) {
   return (
     <article className="post-excerpt">
       <h3>title</h3>
@@ -16,21 +16,7 @@ export default function Post() {
       </p>
 
       <div>
-        <button type="button" className="muted-button reaction-button">
-          👍 0
-        </button>
-        <button type="button" className="muted-button reaction-button">
-          🎉 0
-        </button>
-        <button type="button" className="muted-button reaction-button">
-          ❤️ 0
-        </button>
-        <button type="button" className="muted-button reaction-button">
-          🚀 0
-        </button>
-        <button type="button" className="muted-button reaction-button">
-          👀 0
-        </button>
+        <PostReactions />
       </div>
       <a
         className="button muted-button"
