@@ -17,7 +17,7 @@ export const addNewPost = createAsyncThunk(
 );
 
 const postsAdapter = createEntityAdapter({
-  sortComparer: (a, b) => a.date - b.date,
+  sortComparer: (a, b) => b.date - a.date,
 });
 
 export const { selectIds: selectPostIds, selectById: selectPostById } =
