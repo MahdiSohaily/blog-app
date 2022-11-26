@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 export default function PostList() {
+  const postsId = useSelector();
   return (
     <section className="posts-list">
       <h2>Posts</h2>
