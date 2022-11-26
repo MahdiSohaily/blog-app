@@ -3,11 +3,11 @@ const icons = {
   hooray: '🎉',
   heart: '❤️',
   rocket: '🚀',
-  eye: '👀',
+  eyes: '👀',
 };
 export default function PostReactions({ reactions }) {
   const content = Object.keys(reactions).map((item) => (
-    <button type="button" className="muted-button reaction-button">
+    <button key={item} type="button" className="muted-button reaction-button">
       {icons[item]} {reactions[item]}.
     </button>
   ));
