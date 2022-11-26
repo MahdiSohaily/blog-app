@@ -10,9 +10,8 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
 });
 
 const postsAdapter = createEntityAdapter();
-export const { 
-    selectIds: selectPostIds,
-    selectById: selectPostById } = postsAdapter.getSelectors();
+export const { selectIds: selectPostIds, selectById: selectPostById } =
+  postsAdapter.getSelectors((state) => state.posts);
 
 const initialState = postsAdapter.getInitialState({
   status: 'idle',
