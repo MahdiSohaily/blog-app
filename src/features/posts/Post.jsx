@@ -1,4 +1,5 @@
 import React from 'react';
+import PostReactions from './PostReactions';
 
 export default function Post({ id }) {
   return (
@@ -14,10 +15,7 @@ export default function Post({ id }) {
         The zeitgeist contends that one cannot separate cranberries from gentle
         deers! The literature would{' '}
       </p>
-
-      <div>
-        <PostReactions />
-      </div>
+      <PostReactions />
       <a
         className="button muted-button"
         href="/posts/oE1ZviL86I8TznPnEPAy0"
