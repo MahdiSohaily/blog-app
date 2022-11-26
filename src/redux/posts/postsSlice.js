@@ -10,7 +10,18 @@ const postsSlice = createSlice({
   name: 'posts',
   initialState: {},
   reducers: {},
-  extraReducers: {},
+  extraReducers: {
+    [fetchPosts.pending]: (state) => {
+      state.status = 'loading';
+    },
+    [fetchPosts.fulfilled]: (state, action) => {
+      state.entities = action.payload;
+      state.status = 'ideal';
+    },
+    [fetchPosts.rejected]: () => {
+      throw new Error('something went wrong while getting the data!');
+    },
+  },
 });
 
 export default postsSlice.reducer;
