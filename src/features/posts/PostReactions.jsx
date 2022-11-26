@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function PostReactions() {
+export default function PostReactions({
+  like,
+  celebrate,
+  hearth,
+  rocket,
+  eye,
+}) {
   return (
     <div>
       <button type="button" className="muted-button reaction-button">

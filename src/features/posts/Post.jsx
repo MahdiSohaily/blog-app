@@ -1,7 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PostReactions from './PostReactions';
+import { selectPostById } from './postsSlice';
 
 export default function Post({ id }) {
+  const post = useSelector((state) => selectPostById(state, id));
   return (
     <article className="post-excerpt">
       <h3>title</h3>
