@@ -1,9 +1,10 @@
-import React from 'react';
+import moment from 'moment/moment';
 
 export default function PostDate({ date }) {
+  const postDate = moment(date);
   return (
-    <span title="2021-02-06T21:36:04.822Z">
-      &nbsp; <i>28 minutes ago</i>
+    <span title={postDate.toLocaleString()}>
+      &nbsp; <i>{postDate.fromNow()}</i>
     </span>
   );
 }
