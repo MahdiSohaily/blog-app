@@ -9,11 +9,17 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   return await client.get('posts');
 });
 
-export const addNewPost = createAsyncThunk('posts/newPost', async (newPostData) => {
-  return await client.post('posts', newPostData)
-})
+export const addNewPost = createAsyncThunk(
+  'posts/newPost',
+  async (newPostData) => {
+    return await client.post('posts', newPostData);
+  }
+);
 
-const postsAdapter = createEntityAdapter();
+const postsAdapter = createEntityAdapter({
+  sortComparer: (a, b) => a.date - b.date,
+});
+
 export const { selectIds: selectPostIds, selectById: selectPostById } =
   postsAdapter.getSelectors((state) => state.posts);
 
