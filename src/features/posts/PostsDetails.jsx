@@ -10,7 +10,6 @@ import { selectPostById } from './postsSlice';
 export default function PostsDetails() {
   const { postId } = useParams();
   const post = useSelector((state) => selectPostById(state, postId));
-  console.log(post);
 
   return (
     <section>
