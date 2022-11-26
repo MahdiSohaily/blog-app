@@ -1,5 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
+  
+});
+
+
+// posts reducers function to watch for user interactions
 const postsSlice = createSlice({
   name: 'posts',
   initialState: {},
@@ -7,4 +13,4 @@ const postsSlice = createSlice({
   extraReducers: {},
 });
 
-export default postsSlice.reducer
+export default postsSlice.reducer;
