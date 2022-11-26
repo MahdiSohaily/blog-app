@@ -27,10 +27,10 @@ const postsSlice = createSlice({
     },
     [fetchPosts.fulfilled]: (state, action) => {
       postsAdapter.upsertMany(state, action.payload);
-      state.status = 'idle';
+      state.status = 'success';
     },
     [fetchPosts.rejected]: (state, action) => {
-      state.status = 'idle';
+      state.status = 'error';
       console.log(action.payload);
     },
   },
