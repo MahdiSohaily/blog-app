@@ -14,7 +14,7 @@ export const { selectIds: selectPostIds, selectById: selectPostById } =
   postsAdapter.getSelectors((state) => state.posts);
 
 const initialState = postsAdapter.getInitialState({
-  status: 'idle',
+  status: 'ideal',
 });
 
 const postsSlice = createSlice({

@@ -5,7 +5,6 @@ import { fetchPosts, selectPostIds } from './postsSlice';
 
 export default function PostList() {
   const postIds = useSelector(selectPostIds);
-  const content = postIds.map((id) => <Post key={id} id={id} />);
   const status = useSelector((state) => state.posts.status);
   const dispatch = useDispatch();
 
@@ -13,7 +12,16 @@ export default function PostList() {
     if ('ideal' === status) {
       dispatch(fetchPosts());
     }
-  }, [dispatch, status]);
+  });
+
+  let content;
+  if ('loading' === status) {
+    content = <div className='loader'>loading</div>;
+  } else if ('success' === status) {
+    content = postIds.map((id) => <Post key={id} id={id} />);
+  } else {
+    content = <div>Error</div>;
+  }
   return (
     <section className="posts-list">
       <h2>Posts</h2>
