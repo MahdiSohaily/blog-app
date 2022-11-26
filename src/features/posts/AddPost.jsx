@@ -30,14 +30,6 @@ export default function AddPost() {
         title,
         content,
         user: author,
-        date: Date.now(),
-        reactions: {
-          eyes: 0,
-          heart: 0,
-          hooray: 0,
-          rocket: 0,
-          thumbsUp: 0,
-        },
       })
     );
 

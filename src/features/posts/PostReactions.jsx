@@ -11,7 +11,6 @@ const icons = {
 export default function PostReactions({ reactions, postId }) {
   const dispatch = useDispatch();
   const handleReaction = (postId, type) => {
-    console.log(postId);
     dispatch(
       saveReaction({
         postId,
