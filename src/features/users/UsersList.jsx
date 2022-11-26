@@ -1,26 +1,20 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectAllUsers } from './usersSlice';
 
 export default function UsersList() {
+  const users = useSelector(selectAllUsers);
+  const content = users.map((user) => (
+    <li>
+      <Link key={user.id} to={`/users/${user.id}`} dideo-checked="true">
+        {user.firstName} {user.lastName}
+      </Link>
+    </li>
+  ));
   return (
     <section>
       <h2>Users</h2>
-      <ul>
-        <li>
-          <Link to="/users/cVirFz5oVb-CA37EApdul" dideo-checked="true">
-            Candace Braun
-          </Link>
-        </li>
-        <li>
-          <Link to="/users/2ki_W9Uf9jYri0vswEfN2" dideo-checked="true">
-            Emiliano Prohaska I
-          </Link>
-        </li>
-        <li>
-          <Link to="/users/yixgAD2npsFRh8cNoR8-w" dideo-checked="true">
-            Willard Senger
-          </Link>
-        </li>
-      </ul>
+      <ul>{content}</ul>
     </section>
   );
 }
