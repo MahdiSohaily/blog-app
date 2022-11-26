@@ -9,9 +9,9 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   return await client.get('posts');
 });
 
-export const addPost = createAsyncThunk('posts/addPost', async (data) => {
-  return await client.post('posts', data);
-});
+export const addNewPost = createAsyncThunk('posts/newPost', async (newPostData) => {
+  return await client.post('posts', newPostData)
+})
 
 const postsAdapter = createEntityAdapter();
 export const { selectIds: selectPostIds, selectById: selectPostById } =
@@ -37,7 +37,7 @@ const postsSlice = createSlice({
       state.status = 'error';
       console.log(action.payload);
     },
-    [addPost.fulfilled]: postsAdapter.addOne,
+    [addNewPost.fulfilled]: postsAdapter.addOne,
   },
 });
 
