@@ -41,7 +41,7 @@ export default function AddPost() {
   return (
     <section>
       <h2>Add a New Post</h2>
-      <form onSubmit={handleSubmit}>
+      <form>
         <label htmlFor="postTitle">Post Title:</label>
         <input
           value={title}
@@ -67,7 +67,7 @@ export default function AddPost() {
           value={content}
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
-        <button type="button" disabled={!handleSave()}>
+        <button type="button" disabled={!handleSave()} onClick={handleSubmit}>
           Save Post
         </button>
       </form>
