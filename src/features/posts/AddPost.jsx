@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAllUsers } from '../users/usersSlice';
+import { addPost } from './postsSlice';
 
 export default function AddPost() {
   const [title, setTitle] = useState('');
@@ -21,8 +22,20 @@ export default function AddPost() {
     return [title, author, content].every(Boolean) && 'ideal' === status;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setStatus('pending');
+    await dispatch(
+      addPost({
+        title,
+        content,
+        id: author,
+      })
+    );
+
+    setTitle('');
+    setContent('');
+    setAuthor('');
   };
 
   return (
