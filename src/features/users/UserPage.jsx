@@ -1,28 +1,29 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import { selectAllPosts, selectPostsByUser } from '../posts/postsSlice';
+import { selectUserById } from './usersSlice';
 
 export default function UserPage() {
+  const { userId } = useParams();
+  const userPosts = useSelector((state) => selectPostsByUser(state, userId));
+  const posts = useSelector(selectAllPosts);
+  const user = useSelector((state) => selectUserById(state, userId));
+
+  const content = userPosts.map((post) => (
+    <li key={post.id}>
+      <Link to={`/posts/${post.id}`} dideo-checked="true">
+        {post.title}
+      </Link>
+    </li>
+  ));
   return (
     <section>
-      <h2>Candace Braun</h2>
-      <ul>
-        <li>
-          <a href="/posts/Sq0OZJyMWGrjkJAX7BzU-" dideo-checked="true">
-            Those pandas are nothing more than sheeps?
-          </a>
-        </li>
-        <li>
-          <a href="/posts/s1n1EaGGX8YKIm9LN_GB5" dideo-checked="true">
-            The impartial shark reveals itself as an amused frog to those who
-            look.
-          </a>
-        </li>
-        <li>
-          <a href="/posts/3VWHc4H5lTvB9xAU0iDZ9" dideo-checked="true">
-            The zeitgeist contends that some posit the witty scorpion to be less
-            than successful?
-          </a>
-        </li>
-      </ul>
+      <h2>
+        {user && user.name}
+        {user && user.lastName}
+      </h2>
+      <ul>{content}</ul>
     </section>
   );
 }

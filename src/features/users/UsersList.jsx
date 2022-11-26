@@ -5,8 +5,8 @@ import { selectAllUsers } from './usersSlice';
 export default function UsersList() {
   const users = useSelector(selectAllUsers);
   const content = users.map((user) => (
-    <li>
-      <Link key={user.id} to={`/users/${user.id}`} dideo-checked="true">
+    <li key={user.id}>
+      <Link to={`/users/${user.id}`} dideo-checked="true">
         {user.firstName} {user.lastName}
       </Link>
     </li>

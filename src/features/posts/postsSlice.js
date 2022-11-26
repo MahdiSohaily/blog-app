@@ -2,6 +2,7 @@ import {
   createSlice,
   createAsyncThunk,
   createEntityAdapter,
+  createSelector,
 } from '@reduxjs/toolkit';
 import { client } from '../../api/client';
 
@@ -33,6 +34,12 @@ export const {
   selectIds: selectPostIds,
   selectAll: selectAllPosts,
 } = postsAdapter.getSelectors((state) => state.posts);
+
+export const selectPostsByUser = createSelector(
+  selectAllPosts,
+  (state, userId) => userId,
+  (posts, userId) => posts.filter((post) => post.user === userId)
+);
 
 const initialState = postsAdapter.getInitialState({
   status: 'ideal',
