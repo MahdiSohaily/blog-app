@@ -19,7 +19,7 @@ export const addNewPost = createAsyncThunk(
 export const saveReaction = createAsyncThunk(
   'posts/saveReaction',
   async ({ postId, type }) => {
-    client.post(`posts/${postId}/reaction/${type}`);
+    await client.post(`/posts/${postId}/reaction/${type}`);
     return { postId, type };
   }
 );
@@ -28,11 +28,15 @@ const postsAdapter = createEntityAdapter({
   sortComparer: (a, b) => b.date - a.date,
 });
 
-export const { selectIds: selectPostIds, selectById: selectPostById } =
-  postsAdapter.getSelectors((state) => state.posts);
+export const {
+  selectById: selectPostById,
+  selectIds: selectPostIds,
+  selectAll: selectAllPosts,
+} = postsAdapter.getSelectors((state) => state.posts);
 
 const initialState = postsAdapter.getInitialState({
   status: 'ideal',
+  error: null,
 });
 
 const postsSlice = createSlice({
@@ -49,7 +53,7 @@ const postsSlice = createSlice({
     },
     [fetchPosts.rejected]: (state, action) => {
       state.status = 'error';
-      console.log(action.payload);
+      state.error = action.payload;
     },
     [addNewPost.fulfilled]: postsAdapter.addOne,
     [saveReaction.fulfilled]: (state, action) => {
