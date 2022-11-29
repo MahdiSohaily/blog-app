@@ -1,37 +1,24 @@
 # React Project - Math Magician
 
-This is a simple calculator app built with React.js framework and TypeScript programming Language. this calculator application is able to preform some basic Mathematical operations. To preform the mathematical I have used the tired party library called Big.js.
+This is a simple Blog app built with React.js, redux and json-server frameworks. this blog application is able to save new posts, display authors and their posts, and also enable users to like the posts.
 
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
-  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
-### The challenge
-
-Users should be able to:
-
-- View the optimal layout for each page depending on their device's screen size.
-- See hover states for all interactive elements on the page.
-- Preform Basic Mathematical operations.
-- The project have to be built using React Components and state management.
+This is a simple Blog app built with React.js, redux and json-server frameworks. this blog application is able to save new posts, display authors and their posts, and also enable users to like the posts.
 
 ### Screenshot
 
-| Desktop version                              |
-| -------------------------------------------- |
-| ![Solution Screenshot](./design/desktop.png) |
+| Desktop version                              | Desktop version                              |
+| -------------------------------------------- |-------------------------------------------- |
+| ![Solution Screenshot](./design/desktop2.png) |![Solution Screenshot](./design/desktop1.png) |
 
 ### Run the project Locally
 
@@ -42,7 +29,7 @@ following steps:
 git clone https://github.com/MahdiSohaily/blog-app.git
 cd blog-app
 npm install
-npm start
+npm run dev
 ```
 
 ## My process
@@ -55,7 +42,8 @@ npm start
 - CSS Grid
 - Mobile-first workflow
 - React.js framework
-- TypeScript
+- redux
+- json-server
 
 ## Author
 
