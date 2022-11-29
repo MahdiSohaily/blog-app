@@ -1,4 +1,4 @@
-# React Project - Math Magician
+# React-redux Project - Blog APP
 
 This is a simple Blog app built with React.js, redux and json-server frameworks. this blog application is able to save new posts, display authors and their posts, and also enable users to like the posts.
 
